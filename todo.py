@@ -3,13 +3,14 @@ import datetime
 
 
 def help():
-	sa = """Usage :-
-$ ./todo add "todo item" # Add a new todo
-$ ./todo ls			 # Show remaining todos
-$ ./todo del NUMBER	 # Delete a todo
-$ ./todo done NUMBER	 # Complete a todo
-$ ./todo help			 # Show usage
-$ ./todo report		 # Statistics"""
+	sa = """How to use this CLI Application:
+$ ./todo add "todo item" # Adds a new todo
+$ ./todo ls			 # Shows remaining todos
+$ ./todo del NUMBER	 # Deletes a todo
+$ ./todo done NUMBER	 # Completes a todo
+$ ./todo help			 # Shows usage
+$ ./todo report		 # Statistics
+		"""
 	sys.stdout.buffer.write(sa.encode('utf8'))
 
 
@@ -25,7 +26,7 @@ def add(s):
 def ls():
 	try:
 
-		nec()
+		utility()
 		l = len(d)
 		k = l
 
@@ -41,7 +42,7 @@ def ls():
 def deL(no):
 	try:
 		no = int(no)
-		nec()
+		utility()
 		with open("todo.txt", "r+") as f:
 			lines = f.readlines()
 			f.seek(0)
@@ -58,7 +59,7 @@ def deL(no):
 def done(no):
 	try:
 
-		nec()
+		utility()
 		no = int(no)
 		f = open('done.txt', 'a')
 		st = 'x '+str(datetime.datetime.today()).split()[0]+' '+d[no]
@@ -79,7 +80,7 @@ def done(no):
 
 
 def report():
-	nec()
+	utility()
 	try:
 
 		nf = open('done.txt', 'r')
@@ -95,7 +96,7 @@ def report():
 			f'{str(datetime.datetime.today()).split()[0]} Pending : {len(d)} Completed : {len(don)}')
 
 
-def nec():
+def utility():
 	try:
 		f = open('todo.txt', 'r')
 		c = 1
